@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FilmModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="FilmEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Aktors" EntityType="FilmModel.Aktor" />
+    <EntitySet Name="Films" EntityType="FilmModel.Film" />
+    <EntitySet Name="film_aktor" EntityType="FilmModel.film_aktor" />
+    <AssociationSet Name="aktor_fk" Association="FilmModel.aktor_fk">
+      <End Role="Aktor" EntitySet="Aktors" />
+      <End Role="film_aktor" EntitySet="film_aktor" />
+    </AssociationSet>
+    <AssociationSet Name="film_fk" Association="FilmModel.film_fk">
+      <End Role="Film" EntitySet="Films" />
+      <End Role="film_aktor" EntitySet="film_aktor" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Aktor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Imie" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Data_urodzenia" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Miejsce_urodzenia" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="film_aktor" Relationship="FilmModel.aktor_fk" FromRole="Aktor" ToRole="film_aktor" />
+  </EntityType>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tytul" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Gatunek" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Produkcja" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Rezyseria" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Scenariusz" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Rok" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <NavigationProperty Name="film_aktor" Relationship="FilmModel.film_fk" FromRole="Film" ToRole="film_aktor" />
+  </EntityType>
+  <EntityType Name="film_aktor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="film" Type="Int32" Nullable="false" />
+    <Property Name="aktor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Aktor1" Relationship="FilmModel.aktor_fk" FromRole="film_aktor" ToRole="Aktor" />
+    <NavigationProperty Name="Film1" Relationship="FilmModel.film_fk" FromRole="film_aktor" ToRole="Film" />
+  </EntityType>
+  <Association Name="aktor_fk">
+    <End Role="Aktor" Type="FilmModel.Aktor" Multiplicity="1" />
+    <End Role="film_aktor" Type="FilmModel.film_aktor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aktor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="film_aktor">
+        <PropertyRef Name="aktor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="film_fk">
+    <End Role="Film" Type="FilmModel.Film" Multiplicity="1" />
+    <End Role="film_aktor" Type="FilmModel.film_aktor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="film_aktor">
+        <PropertyRef Name="film" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

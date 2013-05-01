@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FilmModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FilmModelStoreContainer">
+          <EntitySet Name="Aktor" EntityType="FilmModel.Store.Aktor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Film" EntityType="FilmModel.Store.Film" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="film_aktor" EntityType="FilmModel.Store.film_aktor" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="aktor_fk" Association="FilmModel.Store.aktor_fk">
+            <End Role="Aktor" EntitySet="Aktor" />
+            <End Role="film_aktor" EntitySet="film_aktor" />
+          </AssociationSet>
+          <AssociationSet Name="film_fk" Association="FilmModel.Store.film_fk">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="film_aktor" EntitySet="film_aktor" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aktor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Data_urodzenia" Type="nvarchar" MaxLength="10" />
+          <Property Name="Miejsce_urodzenia" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Tytul" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gatunek" Type="nvarchar" MaxLength="50" />
+          <Property Name="Produkcja" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rezyseria" Type="nvarchar" MaxLength="50" />
+          <Property Name="Scenariusz" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rok" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="film_aktor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="film" Type="int" Nullable="false" />
+          <Property Name="aktor" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="aktor_fk">
+          <End Role="Aktor" Type="FilmModel.Store.Aktor" Multiplicity="1" />
+          <End Role="film_aktor" Type="FilmModel.Store.film_aktor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aktor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="film_aktor">
+              <PropertyRef Name="aktor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="film_fk">
+          <End Role="Film" Type="FilmModel.Store.Film" Multiplicity="1" />
+          <End Role="film_aktor" Type="FilmModel.Store.film_aktor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="film_aktor">
+              <PropertyRef Name="film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FilmModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FilmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aktors" EntityType="FilmModel.Aktor" />
+          <EntitySet Name="Films" EntityType="FilmModel.Film" />
+          <EntitySet Name="film_aktor" EntityType="FilmModel.film_aktor" />
+          <AssociationSet Name="aktor_fk" Association="FilmModel.aktor_fk">
+            <End Role="Aktor" EntitySet="Aktors" />
+            <End Role="film_aktor" EntitySet="film_aktor" />
+          </AssociationSet>
+          <AssociationSet Name="film_fk" Association="FilmModel.film_fk">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="film_aktor" EntitySet="film_aktor" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aktor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Data_urodzenia" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Miejsce_urodzenia" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="film_aktor" Relationship="FilmModel.aktor_fk" FromRole="Aktor" ToRole="film_aktor" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tytul" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Gatunek" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Produkcja" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Rezyseria" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Scenariusz" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Rok" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="film_aktor" Relationship="FilmModel.film_fk" FromRole="Film" ToRole="film_aktor" />
+        </EntityType>
+        <EntityType Name="film_aktor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="film" Type="Int32" Nullable="false" />
+          <Property Name="aktor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Aktor1" Relationship="FilmModel.aktor_fk" FromRole="film_aktor" ToRole="Aktor" />
+          <NavigationProperty Name="Film1" Relationship="FilmModel.film_fk" FromRole="film_aktor" ToRole="Film" />
+        </EntityType>
+        <Association Name="aktor_fk">
+          <End Role="Aktor" Type="FilmModel.Aktor" Multiplicity="1" />
+          <End Role="film_aktor" Type="FilmModel.film_aktor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Aktor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="film_aktor">
+              <PropertyRef Name="aktor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="film_fk">
+          <End Role="Film" Type="FilmModel.Film" Multiplicity="1" />
+          <End Role="film_aktor" Type="FilmModel.film_aktor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="film_aktor">
+              <PropertyRef Name="film" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FilmModelStoreContainer" CdmEntityContainer="FilmEntities">
+          <EntitySetMapping Name="Aktors"><EntityTypeMapping TypeName="FilmModel.Aktor"><MappingFragment StoreEntitySet="Aktor">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="Imie" ColumnName="Imie" />
+            <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+            <ScalarProperty Name="Data_urodzenia" ColumnName="Data_urodzenia" />
+            <ScalarProperty Name="Miejsce_urodzenia" ColumnName="Miejsce_urodzenia" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Films"><EntityTypeMapping TypeName="FilmModel.Film"><MappingFragment StoreEntitySet="Film">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+            <ScalarProperty Name="Gatunek" ColumnName="Gatunek" />
+            <ScalarProperty Name="Produkcja" ColumnName="Produkcja" />
+            <ScalarProperty Name="Rezyseria" ColumnName="Rezyseria" />
+            <ScalarProperty Name="Scenariusz" ColumnName="Scenariusz" />
+            <ScalarProperty Name="Rok" ColumnName="Rok" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="film_aktor"><EntityTypeMapping TypeName="FilmModel.film_aktor"><MappingFragment StoreEntitySet="film_aktor">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="film" ColumnName="film" />
+            <ScalarProperty Name="aktor" ColumnName="aktor" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="FilmModel.Aktor" Width="1.5" PointX="0.75" PointY="0.875" Height="1.9210009765625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmModel.Film" Width="1.5" PointX="0.75" PointY="3.75" Height="2.2496956380208335" IsExpanded="true" />
+        <EntityTypeShape EntityType="FilmModel.film_aktor" Width="1.5" PointX="3" PointY="1" Height="1.7566536458333324" IsExpanded="true" />
+        <AssociationConnector Association="FilmModel.aktor_fk" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.8783268229166663" />
+          <ConnectorPoint PointX="3" PointY="1.8783268229166663" />
+        </AssociationConnector>
+        <AssociationConnector Association="FilmModel.film_fk" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.8748478190104167" />
+          <ConnectorPoint PointX="3.75" PointY="4.8748478190104167" />
+          <ConnectorPoint PointX="3.75" PointY="2.7566536458333326" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

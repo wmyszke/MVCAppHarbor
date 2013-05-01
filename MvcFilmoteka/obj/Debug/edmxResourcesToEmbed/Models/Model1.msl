@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FilmModelStoreContainer" CdmEntityContainer="FilmEntities">
+    <EntitySetMapping Name="Aktors">
+      <EntityTypeMapping TypeName="FilmModel.Aktor">
+        <MappingFragment StoreEntitySet="Aktor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Data_urodzenia" ColumnName="Data_urodzenia" />
+          <ScalarProperty Name="Miejsce_urodzenia" ColumnName="Miejsce_urodzenia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Films">
+      <EntityTypeMapping TypeName="FilmModel.Film">
+        <MappingFragment StoreEntitySet="Film">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Tytul" ColumnName="Tytul" />
+          <ScalarProperty Name="Gatunek" ColumnName="Gatunek" />
+          <ScalarProperty Name="Produkcja" ColumnName="Produkcja" />
+          <ScalarProperty Name="Rezyseria" ColumnName="Rezyseria" />
+          <ScalarProperty Name="Scenariusz" ColumnName="Scenariusz" />
+          <ScalarProperty Name="Rok" ColumnName="Rok" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="film_aktor">
+      <EntityTypeMapping TypeName="FilmModel.film_aktor">
+        <MappingFragment StoreEntitySet="film_aktor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="film" ColumnName="film" />
+          <ScalarProperty Name="aktor" ColumnName="aktor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FilmModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FilmModelStoreContainer">
+    <EntitySet Name="Aktor" EntityType="FilmModel.Store.Aktor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Film" EntityType="FilmModel.Store.Film" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="film_aktor" EntityType="FilmModel.Store.film_aktor" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="aktor_fk" Association="FilmModel.Store.aktor_fk">
+      <End Role="Aktor" EntitySet="Aktor" />
+      <End Role="film_aktor" EntitySet="film_aktor" />
+    </AssociationSet>
+    <AssociationSet Name="film_fk" Association="FilmModel.Store.film_fk">
+      <End Role="Film" EntitySet="Film" />
+      <End Role="film_aktor" EntitySet="film_aktor" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Aktor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Imie" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Nazwisko" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Data_urodzenia" Type="nvarchar" MaxLength="10" />
+    <Property Name="Miejsce_urodzenia" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Film">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Tytul" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gatunek" Type="nvarchar" MaxLength="50" />
+    <Property Name="Produkcja" Type="nvarchar" MaxLength="50" />
+    <Property Name="Rezyseria" Type="nvarchar" MaxLength="50" />
+    <Property Name="Scenariusz" Type="nvarchar" MaxLength="50" />
+    <Property Name="Rok" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="film_aktor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="film" Type="int" Nullable="false" />
+    <Property Name="aktor" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="aktor_fk">
+    <End Role="Aktor" Type="FilmModel.Store.Aktor" Multiplicity="1" />
+    <End Role="film_aktor" Type="FilmModel.Store.film_aktor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aktor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="film_aktor">
+        <PropertyRef Name="aktor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="film_fk">
+    <End Role="Film" Type="FilmModel.Store.Film" Multiplicity="1" />
+    <End Role="film_aktor" Type="FilmModel.Store.film_aktor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Film">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="film_aktor">
+        <PropertyRef Name="film" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
