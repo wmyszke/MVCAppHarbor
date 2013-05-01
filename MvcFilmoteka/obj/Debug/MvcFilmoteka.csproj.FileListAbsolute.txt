@@ -1,0 +1,7 @@
+P:\Visual Web Developer 2010\MvcFilmoteka\MvcFilmoteka\bin\MvcFilmoteka.dll
+P:\Visual Web Developer 2010\MvcFilmoteka\MvcFilmoteka\bin\MvcFilmoteka.pdb
+P:\Visual Web Developer 2010\MvcFilmoteka\MvcFilmoteka\bin\EntityFramework.dll
+P:\Visual Web Developer 2010\MvcFilmoteka\MvcFilmoteka\bin\EntityFramework.xml
+P:\Visual Web Developer 2010\MvcFilmoteka\MvcFilmoteka\obj\Debug\ResolveAssemblyReference.cache
+P:\Visual Web Developer 2010\MvcFilmoteka\MvcFilmoteka\obj\Debug\MvcFilmoteka.dll
+P:\Visual Web Developer 2010\MvcFilmoteka\MvcFilmoteka\obj\Debug\MvcFilmoteka.pdb
