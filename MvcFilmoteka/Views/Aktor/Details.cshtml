@@ -1,0 +1,35 @@
+﻿@model MvcFilmoteka.Models.Aktor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Aktor</legend>
+
+    <div class="display-label">Imie</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Imie)
+    </div>
+
+    <div class="display-label">Nazwisko</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nazwisko)
+    </div>
+
+    <div class="display-label">Data_urodzenia</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data_urodzenia)
+    </div>
+
+    <div class="display-label">Miejsce_urodzenia</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Miejsce_urodzenia)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
