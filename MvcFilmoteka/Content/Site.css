@@ -10,7 +10,7 @@ body {
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
-    color: #696969;
+    color: #696969; /*szary*/
 }
 
 a:link {
@@ -20,17 +20,18 @@ a:link {
 }
 
 a:visited {
-    color: #505abc;
+    color: #505abc; /*niebieski*/
 }
 
 a:hover {
     /*color: #1d60ff;*/
-    color: #e35724;
+    color: #e35724; /*pomaranczowy*/
     text-decoration: none;
 }
 
 a:active {
-    color: #12eb87;
+    /*color: #12eb87;*/ /*zielony*/
+    color: #dfdfdf; /*szary*/
 }
 
 p, ul {
@@ -49,7 +50,7 @@ section {
 ----------------------------------------------------------*/
 h1, h2, h3, h4, h5, h6 {
     font-size: 1.5em;
-    color: #000;
+    color: #000; /*czarny*/
 }
 
 h1 {
@@ -88,7 +89,7 @@ page width. Or, you can specify an exact pixel width. */
 header, #header {
     position: relative;
     margin-bottom: 0px;
-    color: #000;
+    color: #000; /*czarny*/
     padding: 0;
 }
 
@@ -96,7 +97,7 @@ header h1, #header h1 {
     font-weight: bold;
     padding: 5px 0;
     margin: 0;
-    color: #fff;
+    color: #fff; /*bialy*/
     border: none;
     line-height: 2em;
     font-size: 32px !important;
@@ -128,7 +129,7 @@ footer,
 /* TAB MENU   
 ----------------------------------------------------------*/
 ul#menu {
-    border-bottom: 1px #5C87B2 solid;
+    border-bottom: 1px #5C87B2 solid; /*jasny niebieski*/
     padding: 0 0 2px;
     position: relative;
     margin: 0;
@@ -154,9 +155,9 @@ ul#menu li a {
     text-decoration: none;
     line-height: 2.8em;
     /*background-color: #e8eef4;*/ /*to taki niebieskawy*/
-    background-color: #f5f5f5;
-    /*color: #034af3;*/
-    color: #e35724;
+    background-color: #f5f5f5; /*bardzo jasny szary*/
+    /*color: #034af3;*/ /*niebieski*/
+    color: #e35724; /*pomaranczowy*/
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
@@ -168,7 +169,8 @@ ul#menu li a:hover {
 }
 
 ul#menu li a:active {
-    background-color: #a6e2a6;
+    /*background-color: #a6e2a6;*/ /*jasno zielony*/
+    background-color: #e0e0e0; /*średio ciemny szary*/
     text-decoration: none;
 }
 
