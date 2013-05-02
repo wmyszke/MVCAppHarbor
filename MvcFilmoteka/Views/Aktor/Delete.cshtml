@@ -1,16 +1,16 @@
 ﻿@model MvcFilmoteka.Models.Aktor
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Usuń";
 }
 
-<h2>Delete</h2>
+<h2>Usuń</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Czy jesteś pewny że chcesz usuńąć ten rekord?</h3>
 <fieldset>
     <legend>Aktor</legend>
 
-    <div class="display-label">Imie</div>
+    <div class="display-label">Imię</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Imie)
     </div>
@@ -20,19 +20,19 @@
         @Html.DisplayFor(model => model.Nazwisko)
     </div>
 
-    <div class="display-label">Data_urodzenia</div>
+    <div class="display-label">Data urodzenia</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Data_urodzenia)
     </div>
 
-    <div class="display-label">Miejsce_urodzenia</div>
+    <div class="display-label">Miejsce urodzenia</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Miejsce_urodzenia)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Usuń" /> |
+        @Html.ActionLink("Powrót do listy aktorów", "Index")
     </p>
 }

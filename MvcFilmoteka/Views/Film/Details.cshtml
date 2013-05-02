@@ -1,15 +1,15 @@
 ﻿@model MvcFilmoteka.Models.Film
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły";
 }
 
-<h2>Details</h2>
+<h2>Szczegóły</h2>
 
 <fieldset>
     <legend>Film</legend>
 
-    <div class="display-label">Tytul</div>
+    <div class="display-label">Tytuł</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Tytul)
     </div>
@@ -24,7 +24,7 @@
         @Html.DisplayFor(model => model.Produkcja)
     </div>
 
-    <div class="display-label">Rezyseria</div>
+    <div class="display-label">Reżyseria</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Rezyseria)
     </div>
@@ -40,6 +40,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edytuj", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Powrót do listy filmów", "Index")
 </p>

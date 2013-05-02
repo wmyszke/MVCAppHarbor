@@ -7,21 +7,21 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Stwórz nowy", "Create")
 </p>
 <table>
     <tr>
         <th>
-            Imie
+            Imię
         </th>
         <th>
             Nazwisko
         </th>
         <th>
-            Data_urodzenia
+            Data urodzenia
         </th>
         <th>
-            Miejsce_urodzenia
+            Miejsce urodzenia
         </th>
         <th></th>
     </tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.Miejsce_urodzenia)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.id }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.id })
         </td>
     </tr>
 }

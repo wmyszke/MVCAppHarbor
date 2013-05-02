@@ -7,12 +7,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Stwórz nowy", "Create")
 </p>
 <table>
     <tr>
         <th>
-            Tytul
+            Tytuł
         </th>
         <th>
             Gatunek
@@ -21,7 +21,7 @@
             Produkcja
         </th>
         <th>
-            Rezyseria
+            Reżyseria
         </th>
         <th>
             Scenariusz
@@ -53,9 +53,9 @@
             @Html.DisplayFor(modelItem => item.Rok)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.id }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.id })
         </td>
     </tr>
 }
