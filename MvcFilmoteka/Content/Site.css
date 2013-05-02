@@ -4,7 +4,8 @@ to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
 body {
-    background-color: #5c87b2;
+    /*background-color: #5c87b2;*/
+    background-image: url('/Zdjecia/grey_wash_wall.jpg');
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -13,7 +14,8 @@ body {
 }
 
 a:link {
-    color: #034af3;
+    /*color: #034af3;*/ /*niebieski*/
+    color: #e35724; /*pomaranczowy*/
     text-decoration: underline;
 }
 
@@ -22,7 +24,8 @@ a:visited {
 }
 
 a:hover {
-    color: #1d60ff;
+    /*color: #1d60ff;*/
+    color: #e35724;
     text-decoration: none;
 }
 
@@ -150,8 +153,10 @@ ul#menu li a {
     font-weight: bold;
     text-decoration: none;
     line-height: 2.8em;
-    background-color: #e8eef4;
-    color: #034af3;
+    /*background-color: #e8eef4;*/ /*to taki niebieskawy*/
+    background-color: #f5f5f5;
+    /*color: #034af3;*/
+    color: #e35724;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
@@ -215,7 +220,8 @@ input[type="submit"] {
 ----------------------------------------------------------*/
 
 table {
-    border: solid 1px #e8eef4;
+    /*border: solid 1px #e8eef4;*/
+    border: solid 1px #bababa; /*kolor czcionki*/
     border-collapse: collapse;
 }
 
@@ -227,7 +233,8 @@ table td {
 table th {
     padding: 6px 5px;
     text-align: left;
-    background-color: #e8eef4;
+    /*background-color: #e8eef4;*/
+    background-color: #bababa;
     border: solid 1px #e8eef4;
 }
 
